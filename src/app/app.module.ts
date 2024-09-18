@@ -6,9 +6,23 @@ import { AppComponent } from './app.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { OAuthModule } from 'angular-oauth2-oidc';
+import { ProtectedComponent } from './pages/protected/protected.component';
+import { LoginComponent } from './pages/login/login.component';
+
 @NgModule({
-  declarations: [AppComponent, FormLoginComponent],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  declarations: [
+    AppComponent,
+    FormLoginComponent,
+    ProtectedComponent,
+    LoginComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    OAuthModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
