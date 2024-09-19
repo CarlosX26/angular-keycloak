@@ -5,3 +5,18 @@ div {
   justify-content: center;
   align-items: center;
 }
+
+div a {
+  text-decoration: none;
+  padding: 1rem;
+  // height: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  background: #4263eb;
+  color: #fff;
+  transition: 0.5s ease-in-out;
+}
+div a:hover {
+  background: #364fc7;
+}
