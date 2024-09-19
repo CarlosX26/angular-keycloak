@@ -12,11 +12,13 @@ import { LoginComponent } from './pages/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 
 export const authConfig: AuthConfig = {
-  issuer: 'http://localhost:8080/realms/my-realm',
+  issuer: 'http://localhost:8080/realms/myrealm', // myrealm é referente ao realm que vc criou 
   redirectUri: window.location.origin,
-  clientId: 'app_angular',
-  responseType: 'code', // Usar o fluxo Authorization Code
-  scope: 'openid profile email', // Scopes para obter o perfil do usuário
+  clientId: 'myclient', //seu cliente do keycloack
+  responseType: 'code',
+  scope: 'openid profile email',
+  requireHttps: false,
+  disableAtHashCheck: true,
   showDebugInformation: true,
   strictDiscoveryDocumentValidation: false,
 };
