@@ -1,5 +1,22 @@
 <div class="protected-container">
   <h2>Protected Page</h2>
   <p>Welcome to the protected page!</p>
+
+  <div *ngIf="groups && groups.length > 0; else noGroups">
+    <h3>Groups:</h3>
+    <ul>
+      <li *ngFor="let group of groups">
+        <strong>{{ group.name }}</strong> - {{ group.description }}<br/>
+        <small>Created At: {{ group.CreatedAt | date:'short' }}</small><br/>
+        <small>Updated At: {{ group.UpdatedAt | date:'short' }}</small><br/>
+        <span>Status: {{ group.enabled ? 'Enabled' : 'Disabled' }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noGroups>
+    <p>No groups available.</p>
+  </ng-template>
+
   <button (click)="logout()">Logout</button>
 </div>

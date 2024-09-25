@@ -1,0 +1,21 @@
+:root {
+  --background-color: #f9f9f9;
+  --text-color: #333;
+  --subtext-color: #666;
+  --border-color: #ddd;
+  --button-background: #007bff;
+  --button-text-color: #fff;
+  --button-hover-background: #0056b3;
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --subtext-color: #a0a0a0;
+  --border-color: #333;
+  --button-background: #1e88e5;
+  --button-text-color: #fff;
+  --button-hover-background: #1565c0;
+  --box-shadow-color: rgba(255, 255, 255, 0.1);
+}

@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       this.oauthService.initLoginFlow();
+      // this.oauthService.initLoginFlowInPopup()
       return false;
     }
   }

@@ -10,9 +10,10 @@ import { AuthConfig, OAuthModule, OAuthService } from 'angular-oauth2-oidc';
 import { ProtectedComponent } from './pages/protected/protected.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 export const authConfig: AuthConfig = {
-  issuer: 'http://localhost:8080/realms/myrealm', // myrealm é referente ao realm que vc criou 
+  issuer: 'http://localhost:8080/realms/myrealm', // myrealm é referente ao realm que vc criou
   redirectUri: window.location.origin,
   clientId: 'myclient', //seu cliente do keycloack
   responseType: 'code',
@@ -20,6 +21,7 @@ export const authConfig: AuthConfig = {
   requireHttps: false,
   disableAtHashCheck: true,
   showDebugInformation: true,
+  sessionChecksEnabled: true,
   strictDiscoveryDocumentValidation: false,
 };
 
@@ -41,7 +43,7 @@ export const authConfig: AuthConfig = {
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(private oauthService: OAuthService) {
+  constructor(private oauthService: OAuthService, private router: Router) {
     this.configure();
   }
 
@@ -49,4 +51,13 @@ export class AppModule {
     this.oauthService.configure(authConfig);
     this.oauthService.loadDiscoveryDocumentAndTryLogin();
   }
+
+  // private configure() {
+  //   this.oauthService.configure(authConfig);
+  //   this.oauthService.loadDiscoveryDocumentAndTryLogin().then(() => {
+  //     if (this.oauthService.hasValidAccessToken()) {
+  //       this.router.navigate(['/protected']);
+  //     }
+  //   });
+  // }
 }

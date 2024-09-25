@@ -1,26 +1,85 @@
 .protected-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  color: white;
-  
-  h2 {
-    margin-bottom: 20px;
-  }
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #adb5bd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
 
-  button {
-    padding: 10px;
-    margin-top: 2rem;
-    border: none;
-    border-radius: 5px;
-    background-color: #dc3545;
-    color: #fff;
-    cursor: pointer;
+.protected-container h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
 
-    &:hover {
-      background-color: #c82333;
-    }
-  }
+.protected-container p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #666;
+  text-align: center;
+}
+
+.protected-container h3 {
+  margin-bottom: 1rem;
+}
+
+.protected-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.protected-container li {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #e9ecef;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.protected-container li strong {
+  color: #333;
+  font-size: 18px;
+}
+
+.protected-container li small {
+  color: #888;
+}
+
+.protected-container li span {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.protected-container p.ng-template {
+  font-size: 16px;
+  color: #999;
+  text-align: center;
+}
+
+.protected-container button {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.protected-container button:hover {
+  background-color: #0056b3;
+}
+
+.protected-container button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
