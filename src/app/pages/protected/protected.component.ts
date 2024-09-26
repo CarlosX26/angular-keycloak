@@ -17,7 +17,6 @@ export class ProtectedComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // console.log(this.oAuthService.getAccessToken());
     this.loadGroups();
   }
 
@@ -29,8 +28,5 @@ export class ProtectedComponent implements OnInit {
 
   logout() {
     this.oAuthService.revokeTokenAndLogout();
-    // const logoutUrl = `http://localhost:8080/realms/myrealm/protocol/openid-connect/logout?client_id=${this.oAuthService.clientId}&post_logout_redirect_uri=${window.location.origin}&redirect_uri=${window.location.origin}`;
-    // const logoutUrl = `http://localhost:8080/realms/myrealm/protocol/openid-connect/logout`;
-    // window.location.href = logoutUrl;
   }
 }

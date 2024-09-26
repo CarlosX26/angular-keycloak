@@ -6,15 +6,46 @@ import { OAuthService } from 'angular-oauth2-oidc';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private oauthService: OAuthService, private router: Router) {}
+  constructor(private oauthService: OAuthService, private router: Router) {
+    this.startSessionCheck();
+  }
 
   canActivate(): boolean {
-    if (this.oauthService.hasValidAccessToken()) {
+    const token = this.oauthService.getAccessToken();
+    const storedSessionState = sessionStorage.getItem('session_state');
+
+    if (token && storedSessionState) {
       return true;
     } else {
       this.oauthService.initLoginFlow();
-      // this.oauthService.initLoginFlowInPopup()
       return false;
     }
+  }
+
+  private startSessionCheck(): void {
+    setInterval(() => {
+      this.checkSessionState();
+    }, 5000);
+  }
+
+  private checkSessionState(): void {
+    const storedSessionState = sessionStorage.getItem('session_state');
+
+    this.oauthService
+      .loadUserProfile()
+      .then(() => {
+        const currentSessionState = sessionStorage.getItem('session_state');
+
+        if (
+          storedSessionState &&
+          currentSessionState &&
+          storedSessionState !== currentSessionState
+        ) {
+          this.oauthService.logOut();
+        }
+      })
+      .catch(() => {
+        this.oauthService.logOut();
+      });
   }
 }
