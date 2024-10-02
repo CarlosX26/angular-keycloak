@@ -3,33 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormLoginComponent } from './components/form-login/form-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AuthConfig, OAuthModule, OAuthService } from 'angular-oauth2-oidc';
 import { ProtectedComponent } from './pages/protected/protected.component';
-import { LoginComponent } from './pages/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './pages/home/home.component';
 
 export const authConfig: AuthConfig = {
-  issuer: 'http://localhost:8080/realms/myrealm', // myrealm é referente ao realm que vc criou 
-  redirectUri: window.location.origin,
-  clientId: 'myclient', //seu cliente do keycloack
+  issuer: 'http://localhost:8080/realms/my-realm',
+  redirectUri: window.location.origin + '/',
+  clientId: 'angular_app',
   responseType: 'code',
   scope: 'openid profile email',
+  showDebugInformation: true,
   requireHttps: false,
   disableAtHashCheck: true,
-  showDebugInformation: true,
+  sessionChecksEnabled: true,
   strictDiscoveryDocumentValidation: false,
+  silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+  useSilentRefresh: true,
 };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FormLoginComponent,
-    ProtectedComponent,
-    LoginComponent,
-  ],
+  declarations: [AppComponent, ProtectedComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -48,5 +45,6 @@ export class AppModule {
   private configure() {
     this.oauthService.configure(authConfig);
     this.oauthService.loadDiscoveryDocumentAndTryLogin();
+    // this.oauthService.setupAutomaticSilentRefresh();
   }
 }

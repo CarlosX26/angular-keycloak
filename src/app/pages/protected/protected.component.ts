@@ -9,7 +9,10 @@ import { OAuthService } from 'angular-oauth2-oidc';
 export class ProtectedComponent {
   constructor(private oAuthService: OAuthService) {}
 
-  logout() {
-    this.oAuthService.logOut();
+  async logout() {
+    // const logoutUrl = this.oAuthService.logoutUrl!;
+    // this.oAuthService.logOut();
+    // window.location.href = logoutUrl;
+    await this.oAuthService.revokeTokenAndLogout();
   }
 }

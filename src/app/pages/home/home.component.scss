@@ -1,0 +1,16 @@
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+div a {
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: #228be6;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
