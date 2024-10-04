@@ -26,6 +26,12 @@ export class ProtectedComponent implements OnInit {
     });
   }
 
+  loadCompany() {
+    this.groupService.getRoute().subscribe((data) => {
+      this.groups = data;
+    });
+  }
+
   logout() {
     this.oAuthService.revokeTokenAndLogout();
   }

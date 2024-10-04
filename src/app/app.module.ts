@@ -24,7 +24,7 @@ export const authConfig: AuthConfig = {
   sessionChecksEnabled: true,
   strictDiscoveryDocumentValidation: false,
   silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
-  useSilentRefresh: true,
+  useSilentRefresh: false,
 };
 
 @NgModule({
